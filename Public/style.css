@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    width: 600px;
+    margin: 0 auto;
+    border: 3px solid #000;
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+li{
+    width: 50%;
+     padding: 10px 0;
+}
+li.ancho{
+    width: 100%;
+   
+}
+li.derecha{
+    text-align: right;
+   
+}
+input[type=text], select, textarea{
+    width: 100%;
+}
+button[type=submit]{
+    background-color: blue;
+    color: #FFf;
+    width: 80px;
+    height: 30px;
+}
+
+article{
+    padding:10px;
+    border-top: 3px solid #000 ;
+}
+article section{
+    padding-left:10px;
+    border-top: 1px solid #000 ;
+}
+h5{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+h6{
+    padding-left: 20px;
+}
+section div ul{
+    width: 250px;
+}
+.error{
+    color: RED;
+    font-size: 0.8rem;
+}

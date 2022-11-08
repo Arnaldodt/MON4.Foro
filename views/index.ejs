@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/recursos/style.css">
+</head>
+<body>
+    <main>
+        <form method="post" action="/CrearMensaje">
+            <ul>
+                <li>
+                    <label for="nombre">Name:</label><label class="nombre error"></label>
+                </li>
+                <li>
+                    <input type="text" name="nombre" id="nombre" placeholder="Your Name" value="<%=valores.nombre%>">
+                </li>
+                <li class="ancho">
+                    <label for="mensaje">Message:</label><label class="mensaje error"></label>
+                </li>
+                <li class="ancho">
+                    <textarea name="mensaje" id="mensaje" cols="30" rows="10"><%=valores.mensaje%></textarea>
+                </li>
+                <li class="error">
+                    <%for (var x in validaciones){
+                        console.log("X::" + x)
+                        if (x == 0){%>
+                            Errores:<br>
+                        <%}%>
+                        <%=validaciones[x].param%> :: <%=validaciones[x].msg%> <br>
+                    <%}%>
+                </li>
+                <li class="derecha">
+                    <button type="submit">Submit</button>
+                </li>
+            </ul>
+        </form>
+        <%for (var x in mensajes) {%>
+            <article>
+                <h3><%=mensajes[x].nombre%></h3>
+                <h4><%=mensajes[x].mensaje%></h4>
+                <section>
+                    <div style="float: left;">
+                    <%for (var y in mensajes[x].comentarios) {%>
+                        <h5><%=mensajes[x].comentarios[y].nombre%></h5>
+                        <h6><%=mensajes[x].comentarios[y].mensaje%></h6>
+                    <% } %>
+                     </div>
+                    <div style="float: right;">
+                        <form method="post" action="/CrearComentario/<%=mensajes[x]._id%>">
+                            <ul>
+                                <li>
+                                    <label for="nombre">Name:</label>
+                                </li>
+                                <li>
+                                    <input type="text" name="nombre" id="nombre" placeholder="Your Name">
+                                </li>
+                                <li class="ancho">
+                                    <label for="mensaje">Message:</label>
+                                </li>
+                                <li class="ancho">
+                                    <textarea name="mensaje" id="mensaje" cols="10" rows="5"></textarea>
+                                </li>
+                                <li class="ancho derecha">
+                                    <button type="submit">Submit</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div style="clear:both;"></div>     
+                </section>
+            </article>
+         <% } %>
+    </main>
+</body>
+</html>
